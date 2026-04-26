@@ -3,8 +3,7 @@ import { BookCommandRepositoryPort } from "src/books/domain/ports/book-command.r
 import { BookQueryRepositoryPort } from "src/books/domain/ports/book-query.repository.port";
 import { Book } from "src/books/domain/entities/book.entitie";
 import { CreateBookCommand } from "./create-book.command";
-import { HttpException, HttpStatus } from "@nestjs/common"
-;
+import { HttpException, HttpStatus } from "@nestjs/common";
 
 @CommandHandler(CreateBookCommand)
 export class CreateBookHandler implements ICommandHandler<CreateBookCommand> {

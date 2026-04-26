@@ -2,6 +2,9 @@ export class DateVO {
   private readonly value: Date;
 
   constructor(value: Date) {
+    if (Number.isNaN(value.getTime())) {
+      throw new TypeError('Invalid date');
+    }
     if (this.isFutureDate(value)) {
       throw new Error('Date cannot be in the future');
     }

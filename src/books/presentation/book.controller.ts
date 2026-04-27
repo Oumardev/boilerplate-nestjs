@@ -6,6 +6,7 @@ import {
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
 //Command
+import { ImportBooksCommand } from '../application/command/import-books/import-books.command';
 import { CreateBookCommand } from '../application/command/create-book/create-book.command';
 import { DeleteBookCommand } from '../application/command/delete-book/delete-book.command';
 import { UpdateBookCommand } from '../application/command/update-book/update-book.command';
@@ -17,6 +18,7 @@ import { FindBooksQuery } from '../application/query/find-books/find-books.query
 
 //DTO
 import { CreateBookDto } from './dto/create-book.dto';
+import { Book } from '../domain/entities/book.entitie';
 
 
 @Controller('books')
@@ -37,6 +39,17 @@ export class BookController {
             createBookDto.publishedDate,
             createBookDto.isRead
         );
+        return this.commandBus.execute(command);
+    }
+
+    @Post('import')
+    @HttpCode(201)
+    async import(@Body() books: CreateBookDto[]) {
+        const domainBooks = books.map(dto =>
+            Book.create(dto.title, dto.author, dto.isbn, dto.publishedDate, dto.isRead)
+        );
+        const command = new ImportBooksCommand(domainBooks);
+        
         return this.commandBus.execute(command);
     }
 

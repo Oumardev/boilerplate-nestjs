@@ -28,8 +28,7 @@ export class DriverProcessor extends WorkerHost {
                             job.data.title,
                             job.data.author,
                             isbn,
-                            publishedDate,
-                            job.data.isRead
+                            publishedDate
                         )
                     );
                     this.logger.log(`[PROCESSOR] Job id=${job.id} completed for isbn=${job.data.isbn}`);

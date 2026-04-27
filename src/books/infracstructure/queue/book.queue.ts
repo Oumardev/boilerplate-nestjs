@@ -18,8 +18,7 @@ export class BullDriverQueueAdapter implements BookQueuePort {
             title: book['title'],
             author: book['author'],
             isbn,
-            publishedDate: book['publishedDate'].getValue(),
-            isRead: book['isRead'],
+            publishedDate: book['publishedDate'].getValue()
         };
         this.logger.log(`[QUEUE] Adding job for isbn=${isbn} payload=${JSON.stringify(payload)}`);
         await this.bookQueue.add('create-book', payload, {

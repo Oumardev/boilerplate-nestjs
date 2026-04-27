@@ -13,8 +13,4 @@ export class CreateBookDto {
     @IsDate()
     @IsOptional()
     publishedDate: Date;
-    
-    @IsBoolean()
-    @IsOptional()
-    isRead: boolean;
 }

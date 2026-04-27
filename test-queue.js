@@ -22,8 +22,7 @@ function generateBooks(count) {
   return Array.from({ length: count }, (_, i) => ({
     title: `Book ${i + 1}`,
     author: `Author ${i + 1}`,
-    isbn: generateISBN(),
-    isRead: Math.random() > 0.5
+    isbn: generateISBN()
   }));
 }
 

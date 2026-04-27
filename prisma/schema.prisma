@@ -8,11 +8,12 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           Int           @id @default(autoincrement())
+  email        String        @unique
+  name         String?
+  readingLists ReadingList[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
 }
 
 model Book {
@@ -21,6 +22,21 @@ model Book {
   author        String
   isbn          String   @unique
   publishedDate DateTime @default(now())
-  isRead        Boolean  @default(false)
   updatedAt     DateTime @updatedAt
+
+  readingLists ReadingList[]
+}
+
+model ReadingList {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  bookId    Int
+  hasRead   Boolean  @default(false)
+  rating    Int      @default(1) // Note entre 1 et 5
+  comment   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  user User @relation(fields: [userId], references: [id])
+  book Book @relation(fields: [bookId], references: [id])
 }

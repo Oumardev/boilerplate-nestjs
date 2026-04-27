@@ -6,19 +6,17 @@ export class Book {
         private readonly title: string,
         private readonly author: string,
         private readonly isbn: IsbnVO,
-        private readonly publishedDate: DateVO,
-        private readonly isRead: boolean
+        private readonly publishedDate: DateVO
     ) {}
 
     static create(
         title: string,
         author: string,
         isbn: string,
-        publishedDate?: Date,
-        isRead?: boolean
+        publishedDate?: Date
     ): Book {
         const date = publishedDate ?? new Date();
         
-        return new Book(title, author, new IsbnVO(isbn), new DateVO(date), isRead ?? false);
+        return new Book(title, author, new IsbnVO(isbn), new DateVO(date));
     }
 }

@@ -9,8 +9,7 @@ export interface Book {
     title: string,
     author: string,
     isbn: string,
-    publishedDate: Date,
-    isRead: boolean
+    publishedDate: Date
 }
 
 export interface BookParamsPagination {

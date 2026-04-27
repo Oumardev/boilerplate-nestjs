@@ -36,8 +36,7 @@ export class BookController {
             createBookDto.title,
             createBookDto.author,
             createBookDto.isbn,
-            createBookDto.publishedDate,
-            createBookDto.isRead
+            createBookDto.publishedDate
         );
         return this.commandBus.execute(command);
     }
@@ -46,7 +45,7 @@ export class BookController {
     @HttpCode(201)
     async import(@Body() books: CreateBookDto[]) {
         const domainBooks = books.map(dto =>
-            Book.create(dto.title, dto.author, dto.isbn, dto.publishedDate, dto.isRead)
+            Book.create(dto.title, dto.author, dto.isbn, dto.publishedDate)
         );
         const command = new ImportBooksCommand(domainBooks);
         
@@ -83,8 +82,7 @@ export class BookController {
             updateBookDto.title,
             updateBookDto.author,
             updateBookDto.isbn,
-            updateBookDto.publishedDate,
-            updateBookDto.isRead
+            updateBookDto.publishedDate
         );
         return this.commandBus.execute(command);
     }

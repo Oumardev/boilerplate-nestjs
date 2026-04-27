@@ -21,16 +21,11 @@ export class UpdateBookHandler implements ICommandHandler<UpdateBookCommand> {
             throw new HttpException("The book you try to update doesnt existing", HttpStatus.NOT_FOUND)
         }
 
-        if(command.isRead && isExistBook.isRead){
-            throw new HttpException("This book is already mark as read you cannot update", HttpStatus.CONFLICT)
-        }
-
         const updateBook = Book.create(
             command.title ?? isExistBook.title,
             command.author ?? isExistBook.author,
             command.isbn ?? isExistBook.isbn,
-            command.publishedDate ?? isExistBook.publishedDate,
-            command.isRead ?? isExistBook.isRead
+            command.publishedDate ?? isExistBook.publishedDate
         )
 
         const book = await this.commandRepo.update(updateBook)

@@ -24,8 +24,7 @@ export class CreateBookHandler implements ICommandHandler<CreateBookCommand> {
             command.title,
             command.author,
             command.isbn,
-            command.publishedDate,
-            command.isRead
+            command.publishedDate
         );
 
         return await this.commandRepo.create(book);

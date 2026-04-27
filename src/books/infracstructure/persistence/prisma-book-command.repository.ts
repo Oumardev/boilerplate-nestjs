@@ -17,8 +17,7 @@ export class PrismaBookCommandRepository implements BookCommandRepositoryPort {
                 title: book['title'],
                 author: book['author'],
                 isbn: book['isbn'].getValue(),
-                publishedDate: book['publishedDate'].getValue(),
-                isRead: book['isRead']
+                publishedDate: book['publishedDate'].getValue()
             }
         });
         
@@ -26,8 +25,7 @@ export class PrismaBookCommandRepository implements BookCommandRepositoryPort {
             created.title,
             created.author,
             created.isbn,
-            created.publishedDate,
-            created.isRead
+            created.publishedDate
         );
     }
 
@@ -40,8 +38,7 @@ export class PrismaBookCommandRepository implements BookCommandRepositoryPort {
                 title: book['title'],
                 author: book['author'],
                 isbn: book['isbn'].getValue(),
-                publishedDate: book['publishedDate'].getValue(),
-                isRead: book['isRead']
+                publishedDate: book['publishedDate'].getValue()
             }
         });
         
@@ -49,8 +46,7 @@ export class PrismaBookCommandRepository implements BookCommandRepositoryPort {
             updated.title,
             updated.author,
             updated.isbn,
-            updated.publishedDate,
-            updated.isRead
+            updated.publishedDate
         );
     }
 
